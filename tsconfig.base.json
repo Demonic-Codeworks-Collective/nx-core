@@ -1,4 +1,5 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
     "allowJs": false,
     "allowSyntheticDefaultImports": true,
@@ -13,22 +14,26 @@
     "importHelpers": true,
     "incremental": true,
     "isolatedModules": true,
-    "lib": ["es2022"],
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
+    "lib": ["ESNext"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "noEmitOnError": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitOverride": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "pretty": true,
-    "removeComments": false,
-    "resolveJsonModule": false,
     "skipDefaultLibCheck": false,
     "skipLibCheck": true,
     "sourceMap": false,
     "strict": true,
-    "target": "es2022",
-    "verbatimModuleSyntax": false
-  }
+    "target": "ESNext",
+    "verbatimModuleSyntax": false,
+    "removeComments": true,
+    "newLine": "lf",
+    "moduleDetection": "force",
+    "noUncheckedIndexedAccess": true,
+    "resolveJsonModule": true,
+  },
+  "display": "Default"
 }
