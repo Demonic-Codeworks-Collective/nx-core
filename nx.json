@@ -1,23 +1,64 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "namedInputs": {
-    "default": ["{projectRoot}/**/*", "sharedGlobals"],
-    "production": ["default"],
-    "sharedGlobals": ["{workspaceRoot}/.circleci/config.yml"]
+    "default": [
+      "{projectRoot}/**/*",
+      "sharedGlobals"
+    ],
+    "production": [
+      "default"
+    ],
+    "sharedGlobals": [
+      "{workspaceRoot}/.circleci/config.yml"
+    ]
   },
   "nxCloudId": "6711474367777552275344ca",
-  "plugins": [
-    {
-      "plugin": "@nx/js/typescript",
+  "targetDefaults": {
+    "build": {
+      "dependsOn": [
+        "build-base"
+      ],
+      "inputs": [
+        "production",
+        "^production"
+      ],
+      "cache": true
+    },
+    "format:check": {
+      "executor": "nx:run-commands",
       "options": {
-        "typecheck": {
-          "targetName": "typecheck"
-        },
-        "build": {
-          "targetName": "build",
-          "configName": "tsconfig.lib.json"
-        }
-      }
+        "command": "pnpm run format:check"
+      },
+      "outputs": [
+        "node_modules/.cache/.prettiercache"
+      ],
+      "cache": true
+    },
+    "format:fix": {
+      "outputs": [
+        "node_modules/.cache/.prettiercache"
+      ],
+      "cache": true
+    },
+    "build-base": {
+      "dependsOn": [
+        "^build-base",
+        "build-native"
+      ],
+      "inputs": [
+        "production",
+        "^production"
+      ],
+      "executor": "nx:run-commands",
+      "options": {
+        "outputPath": "build/{projectRoot}",
+        "tsConfig": "{projectRoot}/tsconfig.json",
+        "main": "{projectRoot}/index.ts"
+      },
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "cache": true
     }
-  ]
+  }
 }

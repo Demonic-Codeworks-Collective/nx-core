@@ -1,6 +1,6 @@
 {
-  "extends": "./tsconfig.base.json",
-  "compileOnSave": false,
-  "files": [],
-  "references": []
+  "exclude": [
+    "node_modules"
+  ],
+  "extends": "@demonicattack/typescript/base.json"
 }

@@ -1,0 +1,58 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "@demonicattack/eslint",
+  "projectType": "library",
+  "sourceRoot": "packages/eslint",
+  "targets": {
+    "build-base": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm run build",
+        "outputs": [
+          "{workspaceRoot}/dist/packages/eslint"
+        ],
+        "main": "packages/eslint/src/index.ts",
+        "assets": [
+          {
+            "input": "packages/eslint",
+            "glob": "**/files/**",
+            "output": "/"
+          },
+          {
+            "input": "packages/eslint",
+            "glob": "**/files/**/.gitkeep",
+            "output": "/"
+          },
+          {
+            "input": "packages/eslint",
+            "glob": "**/*.json",
+            "ignore": [
+              "**/tsconfig*.json",
+              "project.json"
+            ],
+            "output": "/"
+          },
+          {
+            "input": "packages/eslint",
+            "glob": "**/*.js",
+            "ignore": [
+              "**/jest.config.js",
+              "prettier.config.js"
+            ],
+            "output": "/"
+          },
+          {
+            "input": "packages/eslint",
+            "glob": "**/*.d.ts",
+            "output": "/"
+          },
+          {
+            "input": "",
+            "glob": "LICENSE",
+            "output": "/"
+          }
+        ]
+      }
+    }
+  }
+}

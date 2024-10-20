@@ -1,0 +1,58 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "@demonicattack/prettier",
+  "projectType": "library",
+  "sourceRoot": "packages/prettier",
+  "targets": {
+    "build-base": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm run build",
+        "outputs": [
+          "{workspaceRoot}/dist/packages/prettier"
+        ],
+        "main": "packages/prettier/src/index.ts",
+        "assets": [
+          {
+            "input": "packages/prettier",
+            "glob": "**/files/**",
+            "output": "/"
+          },
+          {
+            "input": "packages/prettier",
+            "glob": "**/files/**/.gitkeep",
+            "output": "/"
+          },
+          {
+            "input": "packages/prettier",
+            "glob": "**/*.json",
+            "ignore": [
+              "**/tsconfig*.json",
+              "project.json"
+            ],
+            "output": "/"
+          },
+          {
+            "input": "packages/prettier",
+            "glob": "**/*.js",
+            "ignore": [
+              "**/jest.config.js",
+              "prettier.config.js"
+            ],
+            "output": "/"
+          },
+          {
+            "input": "packages/prettier",
+            "glob": "**/*.d.ts",
+            "output": "/"
+          },
+          {
+            "input": "",
+            "glob": "LICENSE",
+            "output": "/"
+          }
+        ]
+      }
+    }
+  }
+}
